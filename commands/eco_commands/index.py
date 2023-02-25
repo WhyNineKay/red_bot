@@ -42,7 +42,7 @@ ecocmds = {
 	'top': EcoCommand(import_module(f'{path}top')),
 	'give': EcoCommand(import_module(f'{path}give')),
 	'withdraw': EcoCommand(import_module(f'{path}withdraw')),
-	'item': EcoCommand(import_module(f'{path}shop')),
+	'item': EcoCommand(import_module(f'{path}item')),
 	'use': EcoCommand(import_module(f'{path}use')),
 }
 
