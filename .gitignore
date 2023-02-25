@@ -1,0 +1,7 @@
+.env
+*.pyc
+/JS bot/**
+/TEMP/**
+**/guilds/**
+**/UserData_Class.md
+**/.vscode
