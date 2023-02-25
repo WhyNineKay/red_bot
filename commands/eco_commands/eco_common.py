@@ -250,65 +250,55 @@ class UserData():
 	"""
 	returns the index of a given item type or -1 if it's not found
 	"""
-	def searchInventory(self, type: str):
-		found = False
-		i = 0
-
-		while not found and i < len(self._inventory):
-			if self._inventory[i].type == type:
-				found = True
-				break
-			i += 1
-
-		if found:
-			return i
+	def searchInventory(self, itemType: str):
+		# iterate through the inventory, using the enumerate method.
+		for i, item in enumerate(self._inventory):
+			if item.type == itemType:
+				return i  # item is found, return the index.
 		else:
-			return -1
+			return -1  # item is not found, return -1.
 
 	"""
 	method for adding an item to the inventory property
 	"""
-	def invAddItem(self, type : str, qty=1):
-		found = False
-		i = 0
+	def invAddItem(self, itemType: str, qty=1):
+		# loop through list, if item is found, add qty to it, if not, add item to list
+		itemIndex = self.searchInventory(itemType)
 
-		while not found and i < len(self._inventory):
-			item = self._inventory[i]
-
-			if item.type == type:
-				item.qty += qty
-				found = True
-
-			i += 1
-
-		if not found:
-			index = len(self._inventory)
-			self._inventory.append(Item(type))
-			self._inventory[index].qty = qty
-
+		if itemIndex == -1:
+			# the user has no item of this type in their inventory,
+			# so we add a new item to the inventory.
+			self._inventory.append(Item(itemType, qty))
+		else:
+			# the user has an item of this type in their inventory,
+			# so we add the qty to the existing item.
+			self._inventory[itemIndex].qty += qty
 
 	"""
 	method for removing an item from the inventory property
 	will return the ammount removed
 	"""
-	def invRemoveItem(self, type : str, qty=1):
-		i = 0
-		removed = 0
+	def invRemoveItem(self, itemType : str, qty=1):
+		# search for the item in the inventory
+		itemIndex = self.searchInventory(itemType)
 
-		while removed == 0 and i < len(self._inventory):
-			item = self._inventory[i]
+		if itemIndex == -1:
+			# the user has no item of this type in their inventory, so we return 0
+			return 0
 
-			if item.type == type:
-				item.qty -= qty
-				if item.qty <= 0:
-					removed = qty + item.qty
-					del self._inventory[i]
-				break
+		# the user has an item of this type in their inventory, so we remove the qty from the item
+		self._inventory[itemIndex].qty -= qty
 
-			i += 1
+		removedQty = qty  # positive int
 
-		return removed
+		# if the item qty is 0 or less, we remove the item from the inventory
+		if self._inventory[itemIndex].qty <= 0:
+			removedQty += self._inventory[itemIndex].qty  # qty is negative int
 
+			del self._inventory[itemIndex]
+
+		# return the qty removed
+		return removedQty
 
 	@classmethod
 	def getUserData(cls, path : str, user : discord.abc.User):
