@@ -58,9 +58,9 @@ in {msg.guild.name} by {msg.author.name}#{msg.author.discriminator}')
 			# help: Displays all available commands
 			if command == 'help':
 				log.info('Generating help message')
-				helpmsgdesc = f'{DEF_PREFIX}help: Displays this list\n';
+				helpmsgdesc = f'{DEF_PREFIX}help: Displays this list\n'
 
-				if msg.guild == None:
+				if msg.guild is None:
 					guild = None
 
 				else:
