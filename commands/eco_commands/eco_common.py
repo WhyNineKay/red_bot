@@ -111,13 +111,13 @@ class UserData:
 	A set of data associated with a user, specific to guild
 	"""
 
-	wallet : int
-	bank : int
-	walletMax : int
-	lastDaily : date
-	lastDeposit : date
-	lastSteal : datetime
-	inventory : list[Item]
+	wallet: int
+	bank: int
+	walletMax: int
+	lastDaily: date
+	lastDeposit: date
+	lastSteal: datetime
+	inventory: list[Item]
 
 	# a few values that are useful to be able to access
 	bankMaxMul = 5
@@ -155,7 +155,6 @@ class UserData:
 
 
 		if isinstance(userData.get('inventory', None), list):
-			userData['inventory'] == {}
 			self._inventory = []
 			return
 
