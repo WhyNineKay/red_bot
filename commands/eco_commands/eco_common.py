@@ -300,7 +300,7 @@ class UserData:
 	def getUserData(cls, path : str, user : discord.abc.User):
 
 		log.debug(f'path:{path}, userID:{user.id}')
-		# check the file exists, + timedelta(hours=1)f it doesn't, create a default profile
+		# check the file exists, if it doesn't, create a default profile
 		if os.path.isfile(path):
 			with open(path, mode='rt', encoding='utf-8') as file:
 				data = json.load(file)
