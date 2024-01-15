@@ -24,32 +24,25 @@ class Command:
 		self._name = module.name
 		self._description = module.description
 
-		# set other values!
-		try:
+		if hasattr(module, 'permissions'):
+			# If the command has permissions
 			self._permissions = module.permissions
 
-			if self.permissions == "guilds":
-				try:
-					self._guilds = module.guilds
+			if hasattr(module, 'guilds'):
+				self._guilds = module.guilds
+			else:
+				self._guilds = None
 
-				except:
-					self._guilds = None
+			if hasattr(module, 'roles'):
+				self._roles = module.roles
+			else:
+				self._roles = None
 
-			elif self.permissions == "roles":
-				try:
-					self._roles = module.roles
-
-				except:
-					self._roles = None
-
-			elif self.permissions == "roleperms":
-				try:
-					self._roleperms = module.roleperms
-
-				except:
-					self._roleperms = None
-
-		except:
+			if hasattr(module, 'roleperms'):
+				self._roleperms = module.roleperms
+			else:
+				self._roleperms = None
+		else:
 			self._permissions = None
 
 
