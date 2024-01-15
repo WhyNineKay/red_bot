@@ -35,8 +35,6 @@ class MyClient(discord.Client):
 		if msg.author == self.user or msg.content is None or msg.content == '':
 			return
 
-		if msg.content == '':
-			return
 
 		# pointless dumb command
 		if msg.content == 'yo wuddup' and msg.author.id == CREATOR:
