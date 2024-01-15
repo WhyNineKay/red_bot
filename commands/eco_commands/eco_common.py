@@ -388,7 +388,7 @@ class UserData:
 
 
 	@classmethod
-	def saveUserDatas(cls, userDatas : list[UserData], path : str):
+	def saveUserDatas(cls, userDatas : list['UserData'], path : str):
 		"""
 		save a list of userDatas to file @ path
 		path:
