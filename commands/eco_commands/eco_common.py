@@ -22,14 +22,14 @@ class ItemType:
 	_path = "commands.eco_commands.use_item."
 
 
-	def __init__(self, type, description, cost):
-		self._type = type
+	def __init__(self, itemType, description, cost):
+		self._type = itemType
 		self._description = description
 		self._cost = cost
 
-		if util.find_spec(f"{self._path}{type}"):
-			self.use = import_module(f'{self._path}{type}').use
-			log.debug(f"overrode {type}")
+		if util.find_spec(f"{self._path}{itemType}"):
+			self.use = import_module(f'{self._path}{itemType}').use
+			log.debug(f"overrode {itemType}")
 
 
 
@@ -79,8 +79,8 @@ class Item:
 	blankItemType = ItemType("none", "This item doesn't exist", None)
 
 
-	def __init__(self, type : str, qty=1):
-		self._type = type
+	def __init__(self, itemType: str, qty=1):
+		self._type = itemType
 		self._qty = qty
 
 
@@ -197,7 +197,7 @@ class UserData:
 		return int(self._wallet)
 
 	@wallet.setter
-	def wallet(self, wallet : int):
+	def wallet(self, wallet: int):
 		self._wallet = int(wallet)
 		if wallet > self._walletMax:
 			self._walletMax = int(wallet)
@@ -207,7 +207,7 @@ class UserData:
 		return int(self._bank)
 
 	@bank.setter
-	def bank(self, bank : int):
+	def bank(self, bank: int):
 		self._bank = int(bank)
 
 	@property
@@ -219,7 +219,7 @@ class UserData:
 		return self._lastDaily
 
 	@lastDaily.setter
-	def lastDaily(self, lastDaily : date):
+	def lastDaily(self, lastDaily: date):
 		self._lastDaily = lastDaily
 
 	@property
@@ -227,7 +227,7 @@ class UserData:
 		return self._lastDeposit
 
 	@lastDeposit.setter
-	def lastDeposit(self, lastDeposit : date):
+	def lastDeposit(self, lastDeposit: date):
 		self._lastDeposit = lastDeposit
 
 	@property
@@ -235,7 +235,7 @@ class UserData:
 		return self._lastSteal
 
 	@lastSteal.setter
-	def lastSteal(self, lastSteal : datetime):
+	def lastSteal(self, lastSteal: datetime):
 		self._lastSteal = lastSteal
 
 	@property
@@ -274,7 +274,7 @@ class UserData:
 	method for removing an item from the inventory property
 	will return the ammount removed
 	"""
-	def invRemoveItem(self, itemType : str, qty=1):
+	def invRemoveItem(self, itemType: str, qty=1):
 		# search for the item in the inventory
 		itemIndex = self.searchInventory(itemType)
 
@@ -297,7 +297,7 @@ class UserData:
 		return removedQty
 
 	@classmethod
-	def getUserData(cls, path : str, user : discord.abc.User):
+	def getUserData(cls, path: str, user: discord.abc.User):
 
 		log.debug(f'path:{path}, userID:{user.id}')
 		# check the file exists, if it doesn't, create a default profile
@@ -388,7 +388,7 @@ class UserData:
 
 
 	@classmethod
-	def saveUserDatas(cls, userDatas : list['UserData'], path : str):
+	def saveUserDatas(cls, userDatas: list['UserData'], path: str):
 		"""
 		save a list of userDatas to file @ path
 		path:
