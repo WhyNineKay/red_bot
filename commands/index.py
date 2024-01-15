@@ -2,8 +2,6 @@ from importlib import import_module
 import logging
 import globs
 
-CREATOR = globs.CREATOR
-
 logging.basicConfig()
 log = logging.getLogger(__name__)
 log.setLevel(globs.LOGLEVEL)
@@ -82,14 +80,14 @@ class Command:
 	"""
 	def check_perms(self, msg):
 
-		if self.permissions == None:
+		if self.permissions is None:
 			return True
 
-		elif msg.author.id == CREATOR:
+		elif msg.author.id == globs.CREATOR:
 			return True
 
 		elif self.permissions == "guilds":
-			if msg.guild == None:
+			if msg.guild is None:
 				guild = None
 
 			else:
