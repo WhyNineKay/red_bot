@@ -3,8 +3,6 @@ from commands.index import Command
 import logging
 import globs
 
-CREATOR = globs.CREATOR
-
 logging.basicConfig()
 log = logging.getLogger(__name__)
 log.setLevel(globs.LOGLEVEL)

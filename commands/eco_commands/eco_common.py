@@ -12,11 +12,11 @@ log = logging.getLogger(__name__)
 log.setLevel(globs.LOGLEVEL)
 
 
-class UserData():
+class UserData:
 	pass
 
 
-class ItemType():
+class ItemType:
 	type: str
 	description: str
 	cost: int
@@ -61,7 +61,7 @@ class ItemType():
 
 
 
-class Item():
+class Item:
 	"""
 	An item to go into UserData.inventory
 	"""
@@ -109,7 +109,7 @@ class Item():
 
 
 
-class UserData():
+class UserData:
 	"""
 	A set of data associated with a user, specific to guild
 	"""
