@@ -32,7 +32,7 @@ class MyClient(discord.Client):
 
 		# make sure the message isn't from this bot
 		# or an empty message
-		if msg.author == self.user or msg.content == None or msg.content == '':
+		if msg.author == self.user or msg.content is None or msg.content == '':
 			return
 
 		if msg.content == '':
