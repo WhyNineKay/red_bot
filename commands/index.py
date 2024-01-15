@@ -16,7 +16,7 @@ path = 'commands.'
 command:
 	A container for a command
 """
-class Command():
+class Command:
 
 	def __init__(self, module):
 		# set garanteed values
