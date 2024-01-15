@@ -12,9 +12,6 @@ log = logging.getLogger(__name__)
 log.setLevel(globs.LOGLEVEL)
 
 
-class UserData:
-	pass
-
 
 class ItemType:
 	type: str
